@@ -1,0 +1,20 @@
+[package]
+name = "counter_program"
+version = "0.1.0"
+edition = "2021"
+description = "Solana counter program: first call sets count to 1, every later call doubles it"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+solana-program = "2.2"
+borsh = "1.5"
+
+[features]
+no-entrypoint = []
+custom-heap = []
+custom-panic = []
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(target_os, values("solana"))'] }
